@@ -1,0 +1,8 @@
+# https://docs.hetzner.com/cloud/volumes/overview/
+# We populate pricing information from their API
+[{
+    "name": "default",
+    "minSizeInGiB": 10,
+    "maxSizeInGiB": 10000,
+    "regions": [ "fsn1", "nbg1", "hel1", "ash" ]
+}]

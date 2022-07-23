@@ -1,0 +1,12 @@
+[
+  {
+    "name": "S3 Standard",
+    "pricePerGB": 0.023,
+    "pricePerThousandObjects": 0
+  },
+  {
+    "name": "S3 Intelligent",
+    "pricePerGB": 0.023,
+    "pricePerThousandObjects": 0.0025,
+  }
+]

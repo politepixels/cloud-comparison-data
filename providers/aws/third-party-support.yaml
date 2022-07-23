@@ -1,0 +1,10 @@
+{
+  "terraform": {
+    "enabled": true,
+    "source": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs"
+  },
+  "kubeone": {
+    "enabled": true,
+    "source": "https://github.com/kubermatic/kubeone/tree/master/addons"
+  }
+}

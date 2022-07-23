@@ -1,0 +1,7 @@
+node_modules
+secret.env
+generator/app/data
+data
+keys
+output
+.terraform

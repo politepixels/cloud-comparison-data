@@ -1,0 +1,36 @@
+{
+  "name": "cloud-comparison-data-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "serve": "env $(sed '$a\\' local.env secret.env | xargs) BASE_DIR=\"$(pwd)/src\" node --max-old-space-size=8192 --no-deprecation src/main.js",
+    "inspect": "env $(sed '$a\\' local.env secret.env | xargs) BASE_DIR=\"$(pwd)/src\" node --max-old-space-size=8192 --no-deprecation --inspect src/main.js",
+    "inspect-brk": "env $(sed '$a\\' local.env secret.env | xargs) BASE_DIR=\"$(pwd)/src\" node --max-old-space-size=8192 --no-deprecation --inspect-brk src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/innocent-infra/cloud-comparison-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/innocent-infra/cloud-comparison-data/issues"
+  },
+  "homepage": "https://innocent-infra.nl/",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-pricing": "^3.131.0",
+    "@slack/web-api": "^6.7.2",
+    "axios": "^0.27.2",
+    "chalk": "^4.1.2",
+    "deepmerge": "^4.2.2",
+    "has-ansi": "^4.0.1",
+    "js-yaml": "^4.1.0",
+    "lru-ttl-cache": "^2.4.4",
+    "moment": "^2.29.4",
+    "short-uuid": "^4.2.0",
+    "strip-ansi": "^6.0.1",
+    "util": "^0.12.4",
+    "uuid-by-string": "^3.0.7"
+  }
+}
