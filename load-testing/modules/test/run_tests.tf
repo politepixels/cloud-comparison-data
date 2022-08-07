@@ -1,20 +1,8 @@
-resource "time_sleep" "snooze_before_test" {
-  depends_on = [
-    hcloud_server.main,
-    hcloud_volume.main,
-    hcloud_volume_attachment.main
-  ]
-
-  create_duration = "60s"
-}
-
 resource "null_resource" "test" {
-  depends_on = [time_sleep.snooze_before_test]
-
   connection {
     type        = "ssh"
-    host        = hcloud_server.main.ipv4_address
-    private_key = tls_private_key.key.private_key_pem
+    host        = var.ip_addr
+    private_key = var.ssh_key
   }
 
   provisioner "remote-exec" {
@@ -31,7 +19,7 @@ resource "null_resource" "test" {
       "/usr/bin/fio --name 'RANDOM_TEST' --eta-newline='5s' --filename='random.test' --rw='randrw' --size='2g' --io_size='10g' --blocksize='4k' --ioengine='libaio' --fsync='1' --iodepth='1' --direct='1' --numjobs='1' --runtime='60' --group_reporting > /tests/volume-random.test.stdout",
       // Cpu Tests
       "sleep 30; echo 'Running CPU Test...'",
-#      "/usr/bin/stress-ng --cpu 4 --cpu-method matrixprod --perf -t 30 --yaml /tests/cpu.test.stdout",
+#      "/usr/bin/stress-ng --cpu 4 --cpu-method matrixprod --perf -t 30 --yaml /tests/cpu.test.stdout", #todo use instead of sysbench, having an issue where it can sometimes kill the connection to the vm
       "/usr/bin/sysbench --test=cpu --cpu-max-prime=20000 run > /tests/cpu.test.stdout",
       // Memory Tests
       "sleep 30; echo 'Running Memory Test...'",

@@ -3,6 +3,6 @@ terraform {
   backend "gcs" {
     bucket = "cloud-comparison-tf-states"
     prefix = "hetzner"
-    credentials = "../../keys/production.json"
+    credentials = "../../../keys/production.json"
   }
 }
